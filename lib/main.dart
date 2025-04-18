@@ -98,21 +98,27 @@ class TopNavBar extends StatelessWidget implements PreferredSizeWidget {
               const SizedBox(height: 10),
               Container(
                 color: Colors.blue.shade100,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: List.generate(items.length, (index) {
-                    return TextButton(
-                      onPressed: () => onItemSelected(index),
-                      child: Text(
-                        items[index],
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: selectedIndex == index ? FontWeight.bold : FontWeight.normal,
-                          color: selectedIndex == index ? Colors.blue[900] : Colors.black,
+                height: 48,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.generate(items.length, (index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: TextButton(
+                          onPressed: () => onItemSelected(index),
+                          child: Text(
+                            items[index],
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: selectedIndex == index ? FontWeight.bold : FontWeight.normal,
+                              color: selectedIndex == index ? Colors.blue[900] : Colors.black,
+                            ),
+                          ),
                         ),
-                      ),
-                    );
-                  }),
+                      );
+                    }),
+                  ),
                 ),
               ),
             ],
